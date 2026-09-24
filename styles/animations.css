@@ -1,10 +1,118 @@
+/*----- début de laxf----- */
+[data-anim="draw-ursa-minor"] {
+    width: 100%;
+    height: 100vh;
+    opacity: 0;
+}
+[data-anim="draw-ursa-minor"].visible {
+    opacity: 1;
+    transition: opacity 8s ease;
+}
+
+.bg-star {
+    fill: #fff;
+    opacity: .2;
+    animation: twinkle 3s ease-in-out infinite alternate;
+}
+@keyframes twinkle { to { opacity: .8; } }
+
+.star {
+    fill: #fff;
+    opacity: 0;
+    transform-box: fill-box;
+    transform-origin: center;
+    animation: star-in .6s ease forwards;
+}
+@keyframes star-in {
+    from { opacity: 0; transform: scale(0); }
+    to   { opacity: 1; transform: scale(1); }
+}
+
+.link {
+    fill: none;
+    stroke: rgb(255 255 255 / .6);
+    stroke-width: 1.5;
+    stroke-dasharray: 1;
+    stroke-dashoffset: 1;
+    animation: draw .5s ease forwards;
+}
+@keyframes draw { to { stroke-dashoffset: 0; } }
+
+.polaris .star {
+    fill: #ffe9a8;
+}
+
+.halo {
+    opacity: 0;
+    transform-box: fill-box;
+    transform-origin: center;
+    animation:
+            star-in .8s ease forwards,
+            pulse 2.5s ease-in-out 1.2s infinite alternate;
+}
+@keyframes pulse {
+    from { opacity: .5; transform: scale(.8); }
+    to   { opacity: 1;  transform: scale(1.2); }
+}
+
+.star-label {
+    fill: #ffe9a8;
+    font-size: 20px;
+    letter-spacing: .1em;
+    opacity: 0;
+    animation: label-in .8s ease forwards;
+}
+@keyframes label-in { to { opacity: 1; } }
+/*----- fin de la petite ourse ----- */
+
 [data-anim="fade-up"]{
     opacity: 0;
-    transform: translateY(2px);
-    transition: opacity 2.5s ease, transform 1s ease;
+    transform: none
 }
 
 [data-anim="fade-up"].visible {
     opacity: 1;
+    transform: translateY(30px);
+    transition: opacity 1s ease, transform 1s ease;
+}
+
+[data-anim="resize-img-title"] {
+    opacity: 0;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    transition: height 1s;
+    transition-delay: 1s;
+}
+
+[data-anim="resize-img-title"].visible {
+    opacity: 1;
+    height: 70vh;
     transform: none;
+}
+
+[data-anim="typing"] {
+    width: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    margin: 0 auto;
+    letter-spacing: .15em;
+    border-right: .15em solid transparent;
+}
+
+[data-anim="typing"].visible {
+    width: calc(30 * (1ch + .15em));
+    animation:
+            typing 3.5s steps(30, end) 1.5s backwards,
+            blink-caret .75s step-end 1.5s infinite;
+    animation-delay: 1s;
+}
+
+@keyframes typing {
+    from { width: 0 }
+}
+
+@keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: orange; }
 }

@@ -1,22 +1,44 @@
 /* ---- global styling ---- */
+@font-face {
+    font-family: "Heming";
+    src:
+            local("Heming"),
+            url("fonts/Heming_Variable.ttf") format("woff2"),
+            url("fonts/Heming_Variable.ttf") format("woff2");
+    font-weight: normal;
+}
 
-:root {
-    background: #0e0f23;
-    color: aliceblue
+@font-face {
+    font-family: "OTFr";
+    src:
+            local("OTFr"),
+            url("fonts/OTFr_Glusp.ttf") format("woff2"),
+            url("fonts/OTFr_Glusp.ttf") format("woff2");
+    font-weight: bold;
 }
 
 /* hide page scrollbar */
 /*html { scrollbar-width: none; } /* Firefox and Safari */
 body::-webkit-scrollbar, body::-webkit-scrollbar-button { display: none; } /* Chrome */
 
+:root {
+    background: #0e0f23;
+    color: aliceblue
+}
+
 section{
     height: 102vh;
+}
+
+h1{
+    font-family: "OTFr", sans-serif;
+    padding: 15px;
 }
 
 
 /* ---- customs classes ----*/
 .buffer{
-    height: 30vh;
+    height: 60vh;
 }
 
 .bg {
@@ -43,11 +65,44 @@ section{
     display: flex;
 }
 
+.flex.colum{
+    flex-direction: column;
+}
+
+.flex.center{
+    justify-content: center;
+}
+
+.grid{
+    display: grid;
+}
+
+.grid.center{
+    place-content: center;
+}
+
 .slide{
     height: 102vh;
+}
+
+.title{
+    margin-top: 10vh;
 }
 
 .visible{
     opacity: 1;
 }
 
+
+#sky {
+    height: 100%;
+}
+
+.star {
+    box-shadow: 0 1px rgba(255, 255, 255, 0.4);
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    border-radius: 2px;
+    background-color: white;
+}

@@ -8,17 +8,41 @@
 </head>
 <body>
     <div class="buffer"></div>
+    <!--Slide 1, full polaris-->
     <section class="slide" data-background="img/1-polaris.webp">
-        <div class="content">
-            <h1 data-anim="fade-up">Allo</h1>
+    </section>
+    <!--Slide 2, 70% polaris-->
+    <section class="slide">
+        <div class="content flex colum center">
+            <img src="img/1-polaris.webp" data-anim="resize-img-title" alt="polaris">
+            <h1 data-anim="typing">La theorie de l'etoile polaire</h1>
         </div>
     </section>
+    <!--Slide 3, ursa minor-->
     <section class="slide">
         <div class="content">
-            <h1 data-anim="fade-up">test</h1>
+            <svg id="ursa-svg" viewBox="0 0 1000 600" data-anim="draw-ursa-minor">
+                <defs>
+                    <radialGradient id="glow">
+                        <stop offset="0%" stop-color="#ffe9a8" stop-opacity=".9"/>
+                        <stop offset="100%" stop-color="#ffe9a8" stop-opacity="0"/>
+                    </radialGradient>
+                </defs>
+                <g id="bg-stars"></g>
+                <g id="ursa-lines"></g>
+                <g id="ursa-stars"></g>
+            </svg>
+        </div>
+    </section>
+    <!--Slide 4, nom latin-->
+    <section class="slide">
+        <div class="content flex colum center">
+            <img src="img/1-polaris.webp" data-anim="resize-img-title" alt="polaris">
+            <h1 data-anim="typing">La theorie de l'etoile polaire</h1>
         </div>
     </section>
 
 </body>
-<script src="index.js"></script>
+<script src="scripts/index.js"></script>
+<script src="scripts/ursaMinor.js"></script>
 </html>
