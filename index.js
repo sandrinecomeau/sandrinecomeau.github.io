@@ -17,19 +17,16 @@ const animations = {
 };
 
 
-const observer = new IntersectionObserver((entries, obs) => {
+const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
-        if (!entry.isIntersecting) {
-            const el = entry.target;
-            el.classList.add('invisible');
-            el.classList.remove('visible');
-        }
-        else {
-            const el = entry.target;
-            el.classList.remove('invisible');
-            animations[el.dataset.anim]?.(el);
-        }
+        entry.target.querySelectorAll('[data-anim]').forEach(el => {
+            if (entry.isIntersecting) {
+                animations[el.dataset.anim]?.(el);
+            } else {
+                el.classList.remove('visible');
+            }
+        });
     });
-}, { threshold: 0 });
+}, { threshold: 0.75 });
 
-document.querySelectorAll('[data-anim]').forEach(el => observer.observe(el));
+document.querySelectorAll('.slide').forEach(s => observer.observe(s));

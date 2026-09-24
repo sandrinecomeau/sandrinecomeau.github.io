@@ -4,19 +4,26 @@
     background: #1e153c;
 }
 
+/* hide page scrollbar */
+/*html { scrollbar-width: none; } /* Firefox and Safari */
+body::-webkit-scrollbar, body::-webkit-scrollbar-button { display: none; } /* Chrome */
+
 section{
     height: 100vh;
 }
 
 
 /* ---- customs classes ----*/
-.content{
-    position: sticky;
-    top: 5px;
+.slide{
+    height: 100vh;
 }
 
-.invisible{
-    opacity: 0;
+.content{
+    position: fixed;
+    inset: 0;
+    display: grid;
+    place-content: center;
+    pointer-events: none;
 }
 
 .visible{
