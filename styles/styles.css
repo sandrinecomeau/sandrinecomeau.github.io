@@ -1,7 +1,8 @@
 /* ---- global styling ---- */
 
 :root {
-    background: #1e153c;
+    background: #0e0f23;
+    color: aliceblue
 }
 
 /* hide page scrollbar */
@@ -9,21 +10,41 @@
 body::-webkit-scrollbar, body::-webkit-scrollbar-button { display: none; } /* Chrome */
 
 section{
-    height: 100vh;
+    height: 102vh;
 }
 
 
 /* ---- customs classes ----*/
-.slide{
-    height: 100vh;
+.buffer{
+    height: 30vh;
+}
+
+.bg {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    transition: opacity 2.5s ease;
+}
+
+.bg.active {
+    opacity: 1;
 }
 
 .content{
     position: fixed;
     inset: 0;
-    display: grid;
-    place-content: center;
     pointer-events: none;
+}
+
+.flex{
+    display: flex;
+}
+
+.slide{
+    height: 102vh;
 }
 
 .visible{

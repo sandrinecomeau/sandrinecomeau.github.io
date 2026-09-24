@@ -19,6 +19,8 @@ const animations = {
 
 const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
+        entry.target._bg?.classList.toggle('active', entry.isIntersecting);
+
         entry.target.querySelectorAll('[data-anim]').forEach(el => {
             if (entry.isIntersecting) {
                 animations[el.dataset.anim]?.(el);
@@ -27,6 +29,15 @@ const observer = new IntersectionObserver((entries) => {
             }
         });
     });
-}, { threshold: 0.75 });
+}, { threshold: 0.7 });
+
+document.querySelectorAll('.slide[data-background]').forEach(slide => {
+    const bg = document.createElement('div');
+    bg.className = 'bg';
+    bg.style.backgroundImage = `url(${slide.dataset.background})`;
+    document.body.prepend(bg);
+    slide._bg = bg;
+});
 
 document.querySelectorAll('.slide').forEach(s => observer.observe(s));
+
