@@ -129,6 +129,28 @@
     transform: none;
 }
 
+/*----- spin solid ----- */
+.spin-wrap {
+    perspective: 1000px;
+}
+
+[data-anim='spin'] {
+    opacity: 0;
+}
+
+
+[data-anim='spin'].visible {
+    opacity: 1;
+    width: 250px;
+    animation: spin 6s linear infinite;
+    transform-style: preserve-3d;
+}
+
+@keyframes spin {
+    from { transform: rotateY(0deg); }
+    to   { transform: rotateY(360deg); }
+}
+/*----- spin solid end----- */
 /*----- ticker breaking news banner----- */
 [data-anim="ticker"] {
     width: 100%;

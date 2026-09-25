@@ -7,6 +7,7 @@ const animations = {
     'fade-up': (el) => el.classList.add('visible'),
     'letter-dance': (el) => el.classList.add('visible'),
     'resize-img-title': (el) => el.classList.add('visible'),
+    'spin': (el) => el.classList.add('visible'),
     'ticker': (el) => el.classList.add('visible'),
     'title-reveal': (el) => {
         const animated = el.querySelectorAll('.title-block, h1, .subtitle p');

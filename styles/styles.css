@@ -205,6 +205,13 @@ section{
     height: 102vh;
 }
 
+.table img{
+    padding: 10px;
+    width: 17vw;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+}
+
 .title{
     margin-top: 10vh;
 }
