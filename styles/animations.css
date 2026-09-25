@@ -1,4 +1,16 @@
-/*----- début de laxf----- */
+[data-anim="appears"] {
+    opacity: 0;
+    transform: none
+}
+
+[data-anim="appears"].visible {
+    opacity: 1;
+    transform: none
+}
+
+
+
+/*----- début de petite ourse----- */
 [data-anim="draw-ursa-minor"] {
     width: 100%;
     height: 100vh;
@@ -67,14 +79,40 @@
 
 [data-anim="fade-up"]{
     opacity: 0;
-    transform: none
+    transform: none;
 }
 
 [data-anim="fade-up"].visible {
     opacity: 1;
-    transform: translateY(30px);
-    transition: opacity 1s ease, transform 1s ease;
+    transition: opacity 1s;
+    transition-delay: var(--fade-delay, 1s);
 }
+
+
+/*----- Min/Maj title animation ----- */
+.typing_container {
+    display: flex;
+    justify-content: center;
+    font-size: 3rem;
+    list-style-type: none;
+    gap: 20px;
+}
+
+[data-anim="letter-dance"].visible {
+    animation-name: lowerCase;
+    animation-duration: calc(var(--i) * 1s);
+    animation-fill-mode: forwards;
+    animation-timing-function: linear;
+}
+@keyframes lowerCase {
+    80% {
+        text-transform: lowercase;
+    }
+    100% {
+        text-transform: uppercase;
+    }
+}
+/*----- Min/Maj title animation end----- */
 
 [data-anim="resize-img-title"] {
     opacity: 0;
@@ -91,21 +129,200 @@
     transform: none;
 }
 
+/*----- ticker breaking news banner----- */
+[data-anim="ticker"] {
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    padding: 1rem 0;
+    background: var(--accent-color-blue);
+    opacity: 0;
+}
+
+
+.ticker-track {
+    display: inline-flex;
+    gap: 4rem;
+    animation: scroll-left 20s linear infinite;
+    animation-play-state: paused;
+}
+
+[data-anim="ticker"].visible .ticker-track {
+    animation-play-state: running;
+    opacity: 1;
+}
+
+.ticker-item {
+    font-family: OTFr, sans-serif;
+    font-weight: bold;
+}
+
+@keyframes scroll-left {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+}
+
+/*----- ticker breaking news banner end----- */
+/*----- title reveal----- */
+.title-block-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.title-block-box {
+    width: 750px;
+    height: 300px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.title-name {
+    width: 100%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: 100px;
+}
+
+.title-name .title-block {
+    width: 0%;
+    height: inherit;
+    background: #ffb510;
+    position: absolute;
+}
+
+.title-name h1 {
+    opacity: 0;
+    display: flex;
+    align-items: baseline;
+    position: relative;
+    margin: 0;
+    padding: 0;
+}
+
+.subtitle {
+    width: 100%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: 30px;
+    margin-top: -10px;
+}
+
+.subtitle .block {
+    width: 0%;
+    height: inherit;
+    background: var(--accent-color);
+    position: absolute;
+}
+
+.subtitle p {
+    opacity: 0;
+    font-weight: 400;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    color: #75b6ff;
+}
+
+[data-anim="title-reveal"].visible .title-name .title-block {
+    animation: mainBlock 2s cubic-bezier(.74, .06, .4, .92) forwards;
+}
+[data-anim="title-reveal"].visible .title-name h1 {
+    animation: mainFadeIn 2s forwards;
+    animation-delay: 1.6s;
+}
+[data-anim="title-reveal"].visible .subtitle .block {
+    animation: secBlock 2s cubic-bezier(.74, .06, .4, .92) forwards;
+    animation-delay: 2s;
+}
+[data-anim="title-reveal"].visible .subtitle p {
+    animation: secFadeIn 2s forwards;
+    animation-delay: 3.2s;
+}
+
+@keyframes mainBlock {
+    0% {
+        width: 0%;
+        left: 0;
+
+    }
+    50% {
+        width: 100%;
+        left: 0;
+
+    }
+    100% {
+        width: 0;
+        left: 100%;
+    }
+}
+
+@keyframes secBlock {
+    0% {
+        width: 0%;
+        left: 0;
+
+    }
+    50% {
+        width: 100%;
+        left: 0;
+
+    }
+    100% {
+        width: 0;
+        left: 100%;
+    }
+}
+
+@keyframes mainFadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes secFadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 0.5;
+    }
+}
+/*----- title reveal end----- */
+/*----- typewritter animation----- */
 [data-anim="typing"] {
     width: 0;
     overflow: hidden;
     white-space: nowrap;
     margin: 0 auto;
+    opacity: 0;
     letter-spacing: .15em;
     border-right: .15em solid transparent;
 }
 
 [data-anim="typing"].visible {
+    opacity: 1;
     width: calc(30 * (1ch + .15em));
     animation:
             typing 3.5s steps(30, end) 1.5s backwards,
             blink-caret .75s step-end 1.5s infinite;
-    animation-delay: 1s;
+    animation-delay: 1.5s;
+}
+
+[data-anim="typing"].delay.visible {
+    width: calc(30 * (1ch + .15em));
+    animation:
+            typing 3.5s steps(30, end) 1.5s backwards,
+            blink-caret .75s step-end 1.5s infinite;
+    animation-delay: 5.5s;
 }
 
 @keyframes typing {
@@ -116,3 +333,6 @@
     from, to { border-color: transparent }
     50% { border-color: orange; }
 }
+/*----- typewritter animation end----- */
+
+
