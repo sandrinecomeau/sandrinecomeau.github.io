@@ -18,6 +18,7 @@ const animations = {
         });
         el.classList.add('visible');
     },
+    'triangle-morph': (el) => el.classList.add('visible'),
     'typing': (el) => el.classList.add('visible'),
 };
 
